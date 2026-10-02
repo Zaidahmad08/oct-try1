@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>for Surbhi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Manrope:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--sky:#87B8D8;--sky-light:#C7E0EE;--cloud:#F7F7F1;--cream:#FFF8E8;--sunflower:#F4C542;--gold:#D99B2B;--leaf:#607A45;--deep:#263746;--brown:#80664A;--ease:cubic-bezier(.22,.8,.2,1);--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip;background:#6fa6c9}
+html.lock,html.lock body{overflow:hidden}
+body{font-family:var(--serif);color:var(--cream);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--sunflower);outline-offset:4px}
+
+/* ---------- sky ---------- */
+#bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:linear-gradient(180deg,#4f8fbb 0%,#87B8D8 48%,#cfe5f0 100%)}
+.sun{position:absolute;inset:0;background:radial-gradient(circle at 82% 6%,rgba(255,238,175,.75),transparent 46%);animation:sunny 40s ease-in-out infinite alternate}
+@keyframes sunny{to{opacity:.45;transform:translateX(-6vw)}}
+.cl{position:absolute;top:0;left:0;width:200%;height:100%;background-repeat:repeat-x;background-size:50% 100%;animation:drift calc(var(--d)*var(--m,1)) linear infinite;will-change:transform}
+@keyframes drift{to{transform:translate3d(-50%,0,0)}}
+.cl1{--d:280s;opacity:.55;background-image:radial-gradient(ellipse 20% 9% at 22% 20%,#fff,transparent),radial-gradient(ellipse 24% 10% at 66% 36%,#fff,transparent),radial-gradient(ellipse 18% 8% at 45% 8%,#fff,transparent)}
+.cl2{--d:180s;opacity:.8;top:6%;background-image:radial-gradient(ellipse 22% 11% at 30% 40%,rgba(255,255,255,.95),transparent),radial-gradient(ellipse 20% 9% at 74% 22%,rgba(255,255,255,.9),transparent),radial-gradient(ellipse 14% 7% at 52% 62%,rgba(255,255,255,.7),transparent)}
+.cl3{--d:120s;opacity:.4;top:22%;background-image:radial-gradient(ellipse 30% 4% at 40% 50%,#fff,transparent),radial-gradient(ellipse 26% 3% at 80% 20%,#fff,transparent)}
+#dim{position:fixed;inset:0;z-index:1;background:linear-gradient(180deg,#1b3a54,#4a3520);opacity:.04;transition:opacity 2.4s ease;pointer-events:none}
+.flock{position:absolute;left:0;opacity:.55;will-change:transform}
+.bird{position:absolute;display:block}
+.bird svg{display:block;width:100%;animation:flap .7s ease-in-out infinite alternate}
+@keyframes flap{to{transform:scaleY(.45)}}
+
+/* ---------- sunflowers ---------- */
+.fw{position:fixed;left:0;right:0;bottom:0;height:72svh;z-index:2;pointer-events:none;overflow:hidden}
+.fl-layer{position:absolute;left:-6%;bottom:0;width:112%;height:100%;will-change:transform}
+.fl-layer svg{width:100%;height:100%;display:block;overflow:visible}
+.fl{transform-box:fill-box;transform-origin:50% 100%;animation:sway calc(var(--d)*var(--m,1)) ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-1.5deg)}to{transform:rotate(1.5deg)}}
+.mote{position:fixed;left:var(--x);top:0;width:var(--s);height:var(--s);border-radius:50%;background:rgba(255,244,200,.85);opacity:0;z-index:3;pointer-events:none;animation:fall calc(var(--d)*var(--m,1)) linear infinite}
+.pet{border-radius:60% 0 60% 0;background:var(--sunflower)}
+@keyframes fall{0%{transform:translate3d(0,-5vh,0) rotate(0);opacity:0}10%{opacity:.8}90%{opacity:.6}100%{transform:translate3d(var(--dx),108vh,0) rotate(360deg);opacity:0}}
+.grain{position:fixed;inset:0;z-index:9;pointer-events:none;opacity:.09;mix-blend-mode:multiply;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5 0 0 0 0 .4 0 0 0 0 .3 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+body.calm{--m:1.6}body.quiet{--m:2}
+
+/* ---------- hero + activation ---------- */
+main{position:relative;z-index:4}
+#hero{height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;position:relative;color:var(--deep);padding:0 8vw}
+.txt{transition:opacity 3s 1.2s}
+.started .txt{opacity:0}
+.s{opacity:0;transform:translateY(12px);filter:blur(6px);transition:opacity 1.6s var(--ease),transform 1.6s var(--ease),filter 1.6s var(--ease)}
+.s.on{opacity:1;transform:none;filter:none}
+.a{font-size:clamp(1.5rem,4vw,2.6rem);font-weight:300;line-height:1.35;text-shadow:0 0 30px rgba(255,255,255,.55)}
+.big{font-size:clamp(3rem,10vw,7rem);font-weight:300;font-style:italic;margin-top:1.4rem;line-height:1;text-shadow:0 0 40px rgba(255,255,255,.6)}
+.tiny{font-family:var(--sans);font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem}
+.hint{position:absolute;bottom:max(5svh,24px);left:0;right:0;text-align:center;font-family:var(--sans);font-size:.68rem;letter-spacing:.32em;color:var(--deep);opacity:0;transition:opacity 1.6s}
+.hint.on{opacity:.8}
+.hint i{display:block;font-style:normal;font-size:1.1rem;margin-top:.5rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(8px)}}
+#act{position:fixed;left:0;right:0;bottom:max(9svh,36px);z-index:11;display:flex;flex-direction:column;align-items:center;gap:1rem;color:var(--deep);opacity:0;pointer-events:none;transition:opacity 1.6s}
+#act.show{opacity:1;pointer-events:auto}
+#act.gone{opacity:0;pointer-events:none;transition-duration:1.4s}
+#act .ft{font-size:1.9rem;font-style:italic;font-weight:300}
+#go{width:76px;height:76px;border-radius:50%;border:1px solid var(--deep);background:rgba(255,255,255,.28);display:grid;place-items:center;transition:transform .5s var(--ease),background .5s}
+#go:hover{transform:scale(1.06);background:rgba(255,255,255,.5)}
+#go svg{width:22px;height:22px;margin-left:4px;fill:var(--deep)}
+#act .sm{font-family:var(--sans);font-size:.68rem;letter-spacing:.32em;text-transform:uppercase}
+
+/* ---------- lyrics ---------- */
+#lyr{position:fixed;inset:0;z-index:5;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.2rem;text-align:center;padding:0 9vw;color:var(--deep);pointer-events:none;opacity:0}
+#lyr p{font-weight:300;line-height:1.25;max-width:20ch;min-height:1em;transition:opacity 1.2s var(--ease),transform 1.2s var(--ease),filter 1.2s var(--ease)}
+.lp{font-size:clamp(1.1rem,2.4vw,1.6rem);opacity:.3;filter:blur(2px);transform:translateY(-6px)}
+.lc{font-size:clamp(2rem,6vw,4rem);font-style:italic;opacity:0;filter:blur(8px);transform:translateY(16px) scale(.97);text-shadow:0 0 36px rgba(255,255,255,.6)}
+.lc.in{opacity:1;filter:none;transform:translateY(-6px) scale(1.03)}
+.ln{font-size:clamp(1.1rem,2.4vw,1.6rem);opacity:.22}
+.song{height:110svh}
+
+/* ---------- memories ---------- */
+.mem{position:relative;display:flex;flex-direction:column;padding:16svh 7vw}
+.c{align-items:center}.l{align-items:flex-start}.r{align-items:flex-end}.off{align-items:center;padding-left:20vw}.tall{align-items:center}
+.ph{width:min(86vw,500px);position:relative}
+.l .ph{width:min(80vw,560px)}.r .ph{width:min(80vw,540px)}.off .ph{width:min(70vw,470px)}.tall .ph{width:min(92vw,560px)}
+.pol .ph{background:var(--cream);padding:10px 10px 32px}
+.frame{position:relative;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(135deg,#b9cfdc,#e8d9a6);box-shadow:0 30px 60px -25px rgba(70,45,10,.55),0 8px 20px -8px rgba(70,45,10,.3)}
+.pol .frame{box-shadow:inset 0 0 0 1px rgba(80,60,30,.12)}
+.pol .ph{box-shadow:0 30px 60px -25px rgba(70,45,10,.55),0 8px 20px -8px rgba(70,45,10,.3)}
+.frame img{position:absolute;left:0;top:-8%;width:100%;height:116%;object-fit:cover;opacity:0;transition:opacity 1s;filter:sepia(.1) saturate(1.05) contrast(.97) brightness(1.02);will-change:transform}
+.frame.ok img{opacity:1}
+.frame::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(160deg,rgba(255,225,150,.16),transparent 55%,rgba(30,50,70,.14))}
+.frame.miss img{display:none}
+.frame.miss::before{content:attr(data-n);position:absolute;inset:0;display:grid;place-items:center;font-size:5rem;font-weight:300;font-style:italic;color:rgba(38,55,70,.35)}
+.wide{padding-left:0;padding-right:0;align-items:center}
+.wide .ph{width:min(94vw,1180px)}.wide .frame{aspect-ratio:16/10!important}
+.full{padding:0;align-items:stretch}.full .ph{width:100%}
+.full .frame{aspect-ratio:auto!important;height:100svh;box-shadow:none}
+.full .frame::after{background:linear-gradient(transparent 45%,rgba(20,30,40,.6))}
+.full .cap{position:absolute;left:0;right:0;bottom:0;padding:0 8vw 12svh;max-width:none;text-align:center}
+.final{padding:44svh 7vw 34svh;align-items:center}.final .ph{width:min(88vw,620px)}
+.cap{max-width:36ch;margin-top:2.2rem;text-shadow:0 1px 18px rgba(25,40,55,.6)}
+.cap.far{margin-top:24svh}.cap.bef{margin-top:0;margin-bottom:18svh}
+.r .cap{text-align:right}.c .cap,.tall .cap,.final .cap,.wide .cap,.off .cap{text-align:center}
+.lab{display:block;font-family:var(--sans);font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;opacity:.75;margin-bottom:.9rem}
+.q{font-size:clamp(1.35rem,2.8vw,2rem);font-style:italic;font-weight:300;line-height:1.3}
+.rv{opacity:0;transform:translateY(40px) scale(1.08);filter:blur(10px);transition:opacity 1.4s var(--ease),transform 1.4s var(--ease),filter 1.4s var(--ease)}
+.final .rv{transition-duration:2.4s}
+.rq{opacity:0;transform:translateY(20px);filter:blur(5px);transition:opacity 1s var(--ease) .4s,transform 1s var(--ease) .4s,filter 1s var(--ease) .4s}
+.rv.on,.rq.on{opacity:1;transform:none;filter:none}
+.rq.slow{transition-duration:2.4s;transition-delay:0s}
+
+/* ---------- little things ---------- */
+.lt{height:calc(var(--n)*62svh + 60svh)}
+.st{position:sticky;top:0;height:100svh;text-shadow:0 1px 20px rgba(25,40,55,.55)}
+.li{position:absolute;left:50%;top:50%;width:min(86vw,720px);text-align:center;font-size:clamp(1.8rem,5vw,3.3rem);font-weight:300;line-height:1.2;opacity:0;transform:translate(-50%,calc(-50% + 13vh));transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.li.ttl{font-style:italic;font-size:clamp(1.4rem,3.6vw,2.3rem)}
+.li.g{transform:translate(-50%,calc(-50% - 26vh))}
+.li.p{opacity:.3;transform:translate(-50%,calc(-50% - 13vh))}
+.li.c{opacity:1;transform:translate(-50%,-50%)}
+.li.n{opacity:.14}
+
+/* ---------- finale ---------- */
+#finale{padding-top:100svh;text-shadow:0 1px 24px rgba(25,40,55,.6);text-align:center}
+.fm{min-height:72svh;display:flex;align-items:center;justify-content:center;padding:0 8vw;font-size:clamp(1.7rem,4.6vw,3.2rem);font-weight:300;line-height:1.3}
+.fm.last{font-size:clamp(2.6rem,7.4vw,5.8rem);font-style:italic;line-height:1.08;min-height:90svh}
+.nm{min-height:130svh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;padding-bottom:20svh}
+.nm h2{font-size:clamp(3.4rem,11vw,8rem);font-weight:300;letter-spacing:.03em;line-height:1}
+.rel{font-size:clamp(1.3rem,3vw,1.9rem);font-style:italic;font-weight:300}
+.alw{font-family:var(--sans);font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;opacity:.8;margin-top:1rem}
+
+/* ---------- music control ---------- */
+#mus{position:fixed;right:max(16px,env(safe-area-inset-right));bottom:max(16px,env(safe-area-inset-bottom));z-index:12;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,248,232,.85);background:rgba(38,55,70,.38);display:flex;align-items:center;justify-content:center;gap:3px;opacity:0;pointer-events:none;transition:opacity 1.4s}
+#mus.show{opacity:1;pointer-events:auto}
+#mus::before{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(255,248,232,.7);opacity:0}
+#mus.pl::before{animation:ring 2.8s ease-out infinite}
+@keyframes ring{from{transform:scale(1);opacity:.7}to{transform:scale(1.55);opacity:0}}
+#mus b{width:2px;height:5px;border-radius:2px;background:var(--cream);display:block}
+#mus.pl b{animation:eq 1s ease-in-out infinite alternate}
+#mus.pl b:nth-child(2){animation-delay:-.4s}#mus.pl b:nth-child(3){animation-delay:-.7s}#mus.pl b:nth-child(4){animation-delay:-.2s}
+@keyframes eq{from{height:5px}to{height:20px}}
+
+@media(max-width:700px){
+.cl3{display:none}
+.mem{padding:12svh 5vw}.off{padding-left:5vw}
+.mem .ph{width:100%}.final .ph{width:100%}
+.wide{padding:12svh 0}.wide .ph{width:100%}.wide .frame{aspect-ratio:4/3!important}
+.full{padding:0}.cap.far{margin-top:16svh}
+#mus{width:56px;height:56px}
+}
+@media(prefers-reduced-motion:reduce){
+.cl,.fl,.mote,.bird svg,.hint i,.sun,#mus.pl::before,#mus.pl b{animation:none!important}
+.rv,.rq,.s{transform:none!important;filter:none!important;transition:opacity 1s!important}
+.lc,.lc.in{transform:none;filter:none}
+}
+</style>
+</head>
+<body>
+<div id="bg"><div class="sun"></div><div class="cl cl1"></div><div class="cl cl2"></div><div class="cl cl3"></div></div>
+<div id="dim"></div>
+<div class="fw" id="fw"></div>
+<div id="motes"></div>
+<div class="grain"></div>
+
+<main>
+  <section id="hero">
+    <div class="txt">
+      <p class="s a" data-d="1000">Somewhere between</p>
+      <p class="s a" data-d="1000">one ordinary day</p>
+      <p class="s a" data-d="1900">and another...</p>
+      <h1 class="s big" data-d="2300">I found you.</h1>
+      <p class="s tiny" data-d="1600">A little something for you.</p>
+    </div>
+    <div class="hint" id="hint">SCROLL TO BEGIN<i>↓</i></div>
+  </section>
+  <section class="song"></section>
+  <div id="story"></div>
+  <section id="finale"></section>
+</main>
+
+<div id="lyr" aria-live="off"><p class="lp"></p><p class="lc"></p><p class="ln"></p></div>
+
+<div id="act">
+  <p class="ft" id="actName"></p>
+  <button id="go" aria-label="Play music"><svg viewBox="0 0 24 24"><path d="M5 3l16 9-16 9z"/></svg></button>
+  <p class="sm">press play</p>
+</div>
+<button id="mus" aria-label="Play music"><b></b><b></b><b></b><b></b></button>
+
+<script>
+/* ==========================================
+   SURBHI'S LOVE STORY — PERSONALIZATION
+   EDIT THIS SECTION ONLY
+   (files go in an "assets" folder beside this HTML)
+   ========================================== */
+const config = {
+  name: "Surbhi",
+  relationship: "my soulmate",
+  closing: "Always.",
+
+  /* SONG — put your mp3 at assets/song.mp3 */
+  song: "assets/song.mp3",
+
+  /* LYRIC SNIPPETS — add only lines you're allowed to use.
+     start/end are seconds in the song. Entries starting with "YOUR" are ignored. */
+  lyrics: [
+    // { text: "a short line you're allowed to use", start: 12, end: 16 },
+    // { text: "another short line",                 start: 20, end: 24 }
+  ],
+
+  /* PHOTO FILES + QUOTES — 13 photos, shown in this order (optional focus = where to crop) */
+  memories: [
+    { image: "assets/surbhi-01.jpg", quote: "If I had to choose you again in every lifetime, I wouldn’t even need a second to think." },
+    { image: "assets/surbhi-02.jpg", quote: "You are not just someone I love; you are the person my heart feels most at home with." },
+    { image: "assets/surbhi-03.jpg", quote: "Somehow, out of all the people in this world, my heart found yours and that still feels like the most beautiful accident of my life." },
+    { image: "assets/surbhi-04.jpg", focus: "50% 30%", quote: "I don’t want a perfect life. I just want an ordinary life where I get to come home to you." },
+    { image: "assets/surbhi-05.jpg", quote: "There are a thousand beautiful things in this world, but somehow, I still look at you and think I’ve found my favorite." },
+    { image: "assets/surbhi-06.jpg", quote: "If loving you is a journey, I don’t care where it takes us. I just never want to stop walking beside you." },
+    { image: "assets/surbhi-07.jpg", focus: "50% 25%", quote: "You make the quiet moments feel special, the difficult days feel lighter, and the good days feel worth remembering." },
+    { image: "assets/surbhi-08.jpg", quote: "I hope you never forget how deeply you are loved not only on your best days, but especially on the days when you struggle to love yourself." },
+    { image: "assets/surbhi-09.jpg", quote: "I don’t need you to be anything more than yourself. The girl you already are is the one I fell for." },
+    { image: "assets/surbhi-10.jpg", quote: "If my heart had a favorite place, it would be wherever you are." },
+    { image: "assets/surbhi-11.jpg", quote: "I could spend years learning every little thing about you and still feel like there’s more of you to fall in love with." },
+    { image: "assets/surbhi-12.jpg", quote: "You are the kind of person I once wished for without knowing what to wish for." },
+    { image: "assets/surbhi-13.jpg", quote: "Out of everything life could have given me, I’m most grateful that it gave me you." }
+  ],
+
+  /* LITTLE THINGS — appears between photo 06 and 07 */
+  littleThingsTitle: "Little things I love about you",
+  littleThings: [
+    "YOUR LITTLE THING",
+    "ANOTHER LITTLE THING",
+    "ANOTHER ONE",
+    "ANOTHER ONE"
+  ],
+
+  /* FINAL MESSAGE — last line is shown the largest */
+  finalMessage: [
+    "Maybe that's why I love October.",
+    "Because somewhere between the blue skies,",
+    "the sunflowers,",
+    "and you...",
+    "I found my favorite place."
+  ]
+};
+/* ========== END OF PERSONALIZATION ========== */
+
+/* Layout recipe per photo (can be changed, but not required):
+   c centered · l left · r right · off offset · wide cinematic · tall large portrait · full full-screen · final last */
+const layouts = ['c','l','r','wide','off','tall','full','l','r','c','off','tall','final'];
+const qMode   = ['after','after','before','far','after','far','over','after','before','far','after','far','far'];
+
+const $ = s => document.querySelector(s);
+const el = (t,c,h) => { const e = document.createElement(t); if (c) e.className = c; if (h != null) e.textContent = h; return e; };
+const clamp = (v,a=0,b=1) => Math.min(b,Math.max(a,v));
+const ease = t => t*t*(3-2*t);
+const pad = n => String(n).padStart(2,'0');
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const mobile = matchMedia('(max-width:700px)').matches;
+const body = document.body, root = document.documentElement;
+let vh = innerHeight, finOn = false;
+
+/* ---------- sunflower field (SVG) ---------- */
+let pet = '';
+for (let k=0;k<18;k++) pet += `<ellipse cy="-30" rx="7.5" ry="16" transform="rotate(${k*20+10})" fill="#D99B2B"/>`;
+for (let k=0;k<18;k++) pet += `<ellipse cy="-30" rx="7.5" ry="16" transform="rotate(${k*20})" fill="#F4C542"/>`;
+document.body.insertAdjacentHTML('beforeend',`<svg width="0" height="0" style="position:absolute"><defs><radialGradient id="dg"><stop offset="0" stop-color="#7a5630"/><stop offset="1" stop-color="#34210f"/></radialGradient><symbol id="sf" viewBox="-50 -50 100 100">${pet}<circle r="18" fill="url(#dg)"/><circle r="18" fill="none" stroke="#2b1c0e" stroke-opacity=".3" stroke-width="1.2"/></symbol></defs></svg>`);
+
+function layerSVG(n,hmin,hmax,s,leaf,stem){
+  let o = '<svg viewBox="0 0 1600 640" preserveAspectRatio="xMidYMax slice">';
+  for (let i=0;i<n;i++){
+    const x=(i+.15+Math.random()*.7)*1600/n, h=hmin+Math.random()*(hmax-hmin), ty=640-h, b=(Math.random()-.5)*50, d=5+Math.random()*5, hx=x+b*1.4;
+    o += `<g class="fl" style="--d:${d.toFixed(1)}s;animation-delay:-${(Math.random()*8).toFixed(1)}s"><path d="M${x} 660Q${x+b} ${640-h*.5} ${hx} ${ty}" stroke="${stem}" stroke-width="${s/14}" fill="none" stroke-linecap="round"/>`;
+    [.35,.55].forEach((f,k)=>{const sy=640-h*f, sx=x+b*f*.9, dr=k?1:-1;
+      o += `<path d="M${sx} ${sy}q${dr*s*.5} ${-s*.35} ${dr*s*.9} ${-s*.1}q${-dr*s*.4} ${s*.3} ${-dr*s*.9} ${s*.1}z" fill="${leaf}"/>`;});
+    o += `<use href="#sf" x="${hx-s/2}" y="${ty-s/2}" width="${s}" height="${s}" transform="rotate(${((Math.random()-.5)*24).toFixed(1)} ${hx} ${ty})"/></g>`;
+  }
+  return o + '</svg>';
+}
+const layers = [
+  {n:16,a:150,b:250,s:64, leaf:'#7d9a72',stem:'#7d9a72',d:70, op:.85},
+  {n:10,a:220,b:340,s:96, leaf:'#6a8750',stem:'#5f7b47',d:90, op:1},
+  {n:6, a:300,b:470,s:150,leaf:'#4f6b38',stem:'#486232',d:115,op:1}
+].map(c => { const e = el('div','fl-layer'); e.style.opacity = c.op; e.innerHTML = layerSVG(c.n,c.a,c.b,c.s,c.leaf,c.stem); $('#fw').append(e); return {e,d:c.d}; });
+
+/* ---------- drifting motes & petals ---------- */
+for (let i=0;i<(mobile?7:14);i++){
+  const m = el('i','mote'+(i%3===0?' pet':''));
+  m.style.cssText = `--x:${Math.random()*100}vw;--s:${i%3?2+Math.random()*3:7+Math.random()*5}px;--d:${26+Math.random()*30}s;--dx:${Math.random()*30-10}vw;animation-delay:-${Math.random()*40}s`;
+  $('#motes').append(m);
+}
+
+/* ---------- birds ---------- */
+const BIRD = '<svg viewBox="0 0 24 10" fill="none" stroke="#2b3d4c" stroke-width="1.6" stroke-linecap="round"><path d="M1 7Q6 0 12 6Q18 0 23 7"/></svg>';
+let alive = 0;
+function flock(){
+  if (RM || alive >= (mobile?1:2)) return;
+  const fin = body.classList.contains('fin'), n = 2+Math.floor(Math.random()*(mobile?2:4)), dir = Math.random()<.5?1:-1, sz = 10+Math.random()*(fin?8:14);
+  const g = el('div','flock'); g.style.top = (fin?30+Math.random()*10:6+Math.random()*34)+'vh';
+  for (let k=0;k<n;k++){ const b = el('i','bird'); b.innerHTML = BIRD;
+    b.style.cssText = `width:${sz*(.7+Math.random()*.5)}px;left:${k*sz*2.2*-dir}px;top:${(Math.random()-.5)*sz*3}px`;
+    b.firstChild.style.animationDelay = `-${Math.random()}s`; g.append(b); }
+  $('#bg').append(g); alive++;
+  const a = g.animate([{transform:`translateX(${dir>0?-15:115}vw)`},{transform:`translateX(${dir>0?115:-15}vw)`}],{duration:(45+Math.random()*35)*1000,easing:'linear'});
+  a.onfinish = () => { g.remove(); alive--; };
+}
+(function loop(){ flock(); setTimeout(loop,((mobile?16:10)+Math.random()*10)*1000*(body.classList.contains('calm')?1.6:1)); })();
+setTimeout(flock,2500);
+
+/* ---------- build memories ---------- */
+const story = $('#story'), par = [];
+const AMP = mobile ? 10 : 20;
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target); } }),{rootMargin:'0px 0px -12% 0px',threshold:.15});
+const total = config.memories.length;
+
+config.memories.forEach((m,i) => {
+  const L = layouts[i] || 'c', mode = qMode[i] || 'after';
+  const sec = el('section','mem '+L+(/^(c|l|r|off)$/.test(L)?' pol':''));
+  const fig = el('figure','ph rv'), fr = el('div','frame'); fr.dataset.n = pad(i+1);
+  const img = new Image(); img.alt = `${config.name}, memory ${i+1}`; img.decoding = 'async'; if (i>0) img.loading = 'lazy';
+  img.onload = () => { if (!/wide|full/.test(L)) fr.style.aspectRatio = clamp(img.naturalWidth/img.naturalHeight,.66,1.7); fr.classList.add('ok'); };
+  img.onerror = () => fr.classList.add('miss');
+  img.style.objectPosition = m.focus || '50% 50%'; img.src = m.image; fr.append(img); fig.append(fr);
+  const cap = el('div','cap rq '+(mode==='far'?'far':mode==='before'?'bef':''));
+  cap.append(el('span','lab',`${pad(i+1)} / ${total}`), el('blockquote','q','“'+m.quote+'”'));
+  if (mode==='before') sec.append(cap,fig); else sec.append(fig,cap);
+  story.append(sec); io.observe(fig); io.observe(cap); par.push({fr,img});
+  if (L==='final') new IntersectionObserver(e => body.classList.toggle('calm',e[0].isIntersecting),{threshold:.3}).observe(sec);
+
+  if (i === 5){ /* little things between photo 06 and 07 */
+    const items = [config.littleThingsTitle,...config.littleThings];
+    const lt = el('section','lt'); lt.style.setProperty('--n',items.length);
+    const st = el('div','st'); items.forEach((t,k) => st.append(el('p','li'+(k?'':' ttl'),t)));
+    lt.append(st); story.append(lt); window.LT = {lt,items:[...st.children]};
+  }
+});
+
+/* ---------- finale ---------- */
+const finale = $('#finale');
+config.finalMessage.forEach((t,k,a) => { const p = el('p','fm rq slow'+(k===a.length-1?' last':''),t); finale.append(p); io.observe(p); });
+const nm = el('div','nm');
+[['h2',config.name],['p',config.relationship+'.','rel'],['p',config.closing,'alw']].forEach((x,k) => {
+  const e = el(x[0],(x[2]||'')+' rq slow',x[1]); e.style.transitionDelay = (k*1.4)+'s'; nm.append(e); io.observe(e); });
+finale.append(nm);
+new IntersectionObserver(e => { finOn = e[0].isIntersecting; body.classList.toggle('fin',finOn); frame(); },{rootMargin:'-30% 0px -30% 0px'}).observe(finale);
+
+/* ---------- scroll engine ---------- */
+let ticking = false, started = false;
+const dimEl = $('#dim'), lyr = $('#lyr');
+function frame(){
+  ticking = false;
+  const y = scrollY, p = clamp((y-vh*.6)/(vh*1.8));
+  layers.forEach((L,i) => {
+    const q = ease(clamp((p-i*.12)/(1-i*.12)));
+    if (RM){ L.e.style.opacity = q; return; }
+    const x = Math.sin(y/vh*.5)*innerWidth*.03*(i+1)/3;
+    L.e.style.transform = `translate3d(${x.toFixed(1)}px,${((1-q)*L.d).toFixed(1)}%,0)`;
+  });
+  dimEl.style.opacity = finOn ? .3 : Math.min(.46,y/(vh*3.2)*.46)+.04;
+  lyr.style.opacity = started ? clamp(1-(y-vh*.5)/(vh*.9)) : 0;
+  if (window.LT){
+    const r = LT.lt.getBoundingClientRect();
+    if (r.bottom > 0 && r.top < vh){
+      const steps = LT.items.length, idx = Math.min(steps-1,Math.floor(clamp(-r.top/(r.height-vh))*steps));
+      LT.items.forEach((e,k) => { e.classList.toggle('g',k<idx-1); e.classList.toggle('p',k===idx-1); e.classList.toggle('c',k===idx); e.classList.toggle('n',k===idx+1); });
+    }
+  }
+  if (!RM) par.forEach(o => { const r = o.fr.getBoundingClientRect(); if (r.bottom<0||r.top>vh) return;
+    o.img.style.transform = `translate3d(0,${(-((r.top+r.height/2)-vh/2)/vh*AMP).toFixed(1)}px,0)`; });
+}
+addEventListener('scroll',() => { if (!ticking){ ticking = true; requestAnimationFrame(frame); } },{passive:true});
+addEventListener('resize',() => { vh = innerHeight; frame(); });
+frame();
+
+/* ---------- audio, lyrics, controls ---------- */
+const audio = new Audio(); audio.preload = 'auto'; audio.src = config.song;
+audio.addEventListener('error',() => {});
+const mus = $('#mus'), act = $('#act');
+function ui(){ const pl = !audio.paused; mus.classList.toggle('pl',pl); mus.setAttribute('aria-label',pl?'Pause music':'Play music'); }
+audio.addEventListener('play',() => { body.classList.remove('quiet'); ui(); });
+audio.addEventListener('pause',ui);
+audio.addEventListener('ended',() => { body.classList.add('quiet'); ui(); });
+mus.onclick = () => { audio.paused ? audio.play().catch(()=>{}) : audio.pause(); };
+
+const LY = config.lyrics.filter(l => l.text && !/^YOUR /i.test(l.text));
+const lp = $('.lp'), lc = $('.lc'), ln = $('.ln'); let li = -2;
+audio.addEventListener('timeupdate',() => {
+  if (!LY.length) return;
+  const t = audio.currentTime, i = LY.findIndex(l => t>=l.start && t<l.end);
+  if (i === li) return; li = i;
+  let up = i; if (i < 0){ up = LY.findIndex(l => l.start > t); if (up < 0) up = LY.length; }
+  lp.textContent = LY[(i>=0?i:up)-1]?.text || '';
+  ln.textContent = LY[i>=0?i+1:up]?.text || '';
+  lc.classList.remove('in');
+  if (i >= 0) setTimeout(() => { if (li === i){ lc.textContent = LY[i].text; lc.classList.add('in'); } },350);
+});
+
+/* ---------- opening sequence ---------- */
+$('#actName').textContent = 'for '+config.name+'.';
+root.classList.add('lock');
+let t = 1200;
+document.querySelectorAll('#hero .s').forEach(e => { setTimeout(() => e.classList.add('on'),t); t += +e.dataset.d; });
+setTimeout(() => act.classList.add('show'),t);
+$('#go').onclick = () => {
+  audio.play().catch(()=>{});
+  act.classList.remove('show'); act.classList.add('gone');
+  root.classList.remove('lock'); body.classList.add('started'); started = true;
+  mus.classList.add('show'); frame();
+  setTimeout(() => $('#hint').classList.add('on'),1400);
+};
+</script>
+</body>
+</html>
